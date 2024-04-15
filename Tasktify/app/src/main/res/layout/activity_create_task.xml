@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="30sp">
+
+    <TextView
+        android:id="@+id/input_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_title"
+        android:textColor="@color/secondary"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/input_title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edittext_rounded_border"
+        android:hint="@string/hint_input_title"
+        android:textColorHint="@color/secondary_light_green"
+        android:autofillHints="" />
+
+
+    <TextView
+        android:id="@+id/input_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_date"
+        android:textColor="@color/secondary"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_title"
+        android:paddingTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_text_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/secondary_light_green"
+        app:layout_constraintTop_toBottomOf="@+id/input_date"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edittext_rounded_border"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/input_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_description"
+        android:textColor="@color/secondary"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_date"
+        android:paddingTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"  />
+
+    <EditText
+        android:id="@+id/edit_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:gravity="start|top"
+        android:textColor="@color/black"
+        tools:text="Lorem ipsum"
+        android:background="@drawable/edittext_rounded_border"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/input_description"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/save_task_button"
+        android:layout_width="157sp"
+        android:background="@drawable/button"
+        android:layout_height="wrap_content"
+        android:text="@string/save_task"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="36sp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

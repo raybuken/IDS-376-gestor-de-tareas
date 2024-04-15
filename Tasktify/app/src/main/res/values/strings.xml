@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name" translatable="false">Tasktify</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="Profile">Profile</string>
+    <string name="hello_user">Hello,\nFred</string>
+    <string name="input_title">title</string>
+    <string name="hint_input_title">Go to market</string>
+    <string name="input_date">Date</string>
+    <string name="input_description">Description</string>
+    <string name="save_task">Save task</string>
+    <string name="successful_new_task">Task saved successful!</string>
+    <string name="system_error">Ha ocurrido un error con el sistema, intente de nuevo mas tarde</string>
+    <string name="add_task">Add Task</string>
+    <string name="plus_text">+</string>
+    <string name="update_task">Update task</string>
+    <string name="delete_task">Delete task</string>
+</resources>

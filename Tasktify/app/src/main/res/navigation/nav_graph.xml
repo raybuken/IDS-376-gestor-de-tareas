@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment"
+    >
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:label="fragment_splash"
+        >
+        <action
+            android:id="@+id/action_splashFragment_to_loginActivity"
+            app:destination="@id/loginActivity"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeActivity"
+            app:destination="@id/homeActivity"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Activities-->
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.tasktify.LoginActivity"
+        android:label="activity_login" />
+
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.tasktify.MainActivity"
+        android:label="activity_home" />
+
+</navigation>
