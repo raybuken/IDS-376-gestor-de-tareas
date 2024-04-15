@@ -1,0 +1,28 @@
+{
+  "name": "topic-researcher",
+  "version": "1.0.0",
+  "description": "Backend for topic researche system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env index.js",
+    "watch": "node --watch --env-file=.env index.js",
+    "update-database": "node --env-file=.env update-database.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raymundo Peña",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.0",
+    "openai": "^4.28.4",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7",
+    "tedious": "^16.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
