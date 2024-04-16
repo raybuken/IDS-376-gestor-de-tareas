@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +43,7 @@ class TaskDetailsActivity: AppCompatActivity() {
         }
 
         val saveTaskButton = findViewById<Button>(R.id.update_task_button)
-        val deleteTaskButton = findViewById<Button>(R.id.delete_task_button)
+        val deleteTaskButton = findViewById<TextView>(R.id.delete_task_button)
 
         saveTaskButton.setOnClickListener(){
             val taskService = RetrofitClient.taskService
@@ -95,6 +96,8 @@ class TaskDetailsActivity: AppCompatActivity() {
                         toast.show()
 
                         startActivity(Intent(context, MainActivity::class.java))
+
+                        finish()
                     }
 
                 }catch(e: Exception){
@@ -115,10 +118,11 @@ class TaskDetailsActivity: AppCompatActivity() {
 
     private fun setButtonsStatus(enabled: Boolean){
         val saveTaskButton = findViewById<Button>(R.id.update_task_button)
-        val deleteTaskButton = findViewById<Button>(R.id.delete_task_button)
+        val deleteTaskButton = findViewById<TextView>(R.id.delete_task_button)
 
         saveTaskButton.isEnabled = enabled
         deleteTaskButton.isEnabled = enabled
 
     }
+
 }

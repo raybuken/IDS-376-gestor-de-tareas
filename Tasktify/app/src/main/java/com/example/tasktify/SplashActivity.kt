@@ -28,10 +28,10 @@ class SplashActivity: AppCompatActivity() {
                     startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 }
 
-                finish()
-
             }catch(e: Exception){
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            }finally {
+                finish()
             }
         }
 

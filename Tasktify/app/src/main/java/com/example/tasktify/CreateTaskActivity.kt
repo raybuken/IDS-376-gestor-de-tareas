@@ -52,6 +52,8 @@ class CreateTaskActivity: AppCompatActivity() {
                         val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
                         toast.show()
                         startActivity(Intent(context, MainActivity::class.java))
+
+                        finish()
                     }else{
 
                     }

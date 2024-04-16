@@ -23,7 +23,6 @@ class RegisterActivity: AppCompatActivity() {
         val registerButton = findViewById<Button>(R.id.button_register)
         val loginLink = findViewById<TextView>(R.id.link_to_login_anchor)
 
-
         registerButton.setOnClickListener(){
             val email = findViewById<EditText>(R.id.register_email_field).text.toString()
             val password = findViewById<EditText>(R.id.register_password_field).text.toString()
@@ -49,6 +48,8 @@ class RegisterActivity: AppCompatActivity() {
                     val toast = Toast.makeText(context, getString(R.string.user_register_success), Toast.LENGTH_LONG)
                     toast.show()
 
+                    finish()
+
                 }catch(e: Exception){
                     val a = e;
                     val toast = Toast.makeText(context, getString(R.string.system_error), Toast.LENGTH_LONG)
@@ -62,6 +63,8 @@ class RegisterActivity: AppCompatActivity() {
 
         loginLink.setOnClickListener(){
             startActivity(Intent(context, LoginActivity::class.java))
+
+            finish()
         }
     }
 }

@@ -50,6 +50,8 @@ class LoginActivity: AppCompatActivity() {
 
                     startActivity(Intent(context, MainActivity::class.java))
 
+                    finish()
+
                 }catch(e: Exception){
                     val toast = Toast.makeText(context, getString(R.string.system_error), Toast.LENGTH_LONG)
                     toast.show()
@@ -64,6 +66,7 @@ class LoginActivity: AppCompatActivity() {
 
         registerLink.setOnClickListener(){
             startActivity(Intent(context, RegisterActivity::class.java))
+            finish()
         }
 
 
