@@ -1,13 +1,13 @@
-const {DATABASE_NAME, SERVER_CONNECTION_USERNAME, SERVER_CONNECTION_PASSWORD} = process.env
+const {DATABASE_NAME, SERVER_CONNECTION_USERNAME, SERVER_CONNECTION_PASSWORD, SERVER_HOST, SERVER_PORT: BD_SERVER_PORT} = process.env
 const Sequelize = require('sequelize');
 const UserModel = require('./User');
 const TaskModel = require('./Task')
 const TaskStatusModel = require('./TaskStatus')
 
 const sequelize = new Sequelize(DATABASE_NAME, SERVER_CONNECTION_USERNAME, SERVER_CONNECTION_PASSWORD,{
-  host: "localhost",
+  host: SERVER_HOST || "localhost",
   dialect: "mssql",
-  port: 3500,
+  port: BD_SERVER_PORT,
   options: {
     instanceName: 'SQLEXPRESS',
   }});
