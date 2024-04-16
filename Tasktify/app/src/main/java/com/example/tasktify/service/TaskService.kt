@@ -1,5 +1,6 @@
 package com.example.tasktify.service
 import com.example.tasktify.model.Login
+import com.example.tasktify.model.RegisterUser
 import com.example.tasktify.model.ResponseStatus
 import com.example.tasktify.model.Task
 import com.example.tasktify.model.TaskListStatus
@@ -20,7 +21,7 @@ interface TaskService {
     suspend fun authenticate(@Body login: Login): ResponseStatus
 
     @POST("api/users/register")
-    suspend fun register(@Body user: User): Call<User>
+    suspend fun register(@Body user: RegisterUser): User
 
     @POST("api/users/token")
     suspend fun validateToken(@Body token: Token): ResponseStatus

@@ -20,4 +20,12 @@
     <string name="plus_text">+</string>
     <string name="update_task">Update task</string>
     <string name="delete_task">Delete task</string>
+    <string name="register">Register</string>
+    <string name="fullname">Full name</string>
+    <string name="signup">Sign Up</string>
+    <string name="user_register_success">User registered successful!</string>
+    <string name="link_login">Do you have account?</string>
+    <string name="link_login_anchor">Sign In</string>
+    <string name="link_register_anchor">Sign up!</string>
+    <string name="link_register">Need an account?</string>
 </resources>

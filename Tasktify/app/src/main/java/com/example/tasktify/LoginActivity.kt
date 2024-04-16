@@ -25,6 +25,7 @@ class LoginActivity: AppCompatActivity() {
         val context = this
 
         val loginButton = findViewById<Button>(R.id.button_login)
+        val registerLink = findViewById<TextView>(R.id.link_to_register_anchor)
 
         loginButton.setOnClickListener{
             val email = findViewById<TextView>(R.id.login_email_field).text.toString()
@@ -59,6 +60,10 @@ class LoginActivity: AppCompatActivity() {
 
             }
 
+        }
+
+        registerLink.setOnClickListener(){
+            startActivity(Intent(context, RegisterActivity::class.java))
         }
 
 

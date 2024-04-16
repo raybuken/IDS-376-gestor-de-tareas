@@ -7,12 +7,12 @@
     android:paddingHorizontal="50dp">
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/register_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50sp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textAlignment="center"
         android:textColor="@color/secondary"
         android:textSize="24sp"
@@ -23,10 +23,27 @@
 
 
     <EditText
-        android:id="@+id/login_email_field"
+        android:id="@+id/register_fullname_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:autofillHints="Joe Dan"
+        android:background="@drawable/edittext_rounded_border"
+        android:fontFamily="@font/poppins"
+        android:hint="@string/fullname"
+        android:inputType="text"
+        android:textColor="@color/secondary"
+        android:textColorHint="@color/secondary"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/register_title"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+    <EditText
+        android:id="@+id/register_email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:autofillHints="example@mail.com"
         android:background="@drawable/edittext_rounded_border"
         android:fontFamily="@font/poppins"
@@ -35,11 +52,11 @@
         android:textColor="@color/secondary"
         android:textColorHint="@color/secondary"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/register_fullname_field"
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/login_password_field"
+        android:id="@+id/register_password_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -51,45 +68,44 @@
         android:textColor="@color/secondary"
         android:textColorHint="@color/secondary"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/login_email_field"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_field"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
-        android:text="@string/log_in"
+        android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/button"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_bold"
-        app:layout_constraintTop_toBottomOf="@+id/login_password_field" />
+        app:layout_constraintTop_toBottomOf="@+id/register_password_field" />
 
     <TextView
-        android:id="@+id/link_to_register"
+        android:id="@+id/link_to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:text="@string/link_register"
+        android:text="@string/link_login"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login" />
+        app:layout_constraintTop_toBottomOf="@+id/button_register" />
 
     <TextView
-        android:id="@+id/link_to_register_anchor"
+        android:id="@+id/link_to_login_anchor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/poppins"
-        android:text="@string/link_register_anchor"
+        android:text="@string/link_login_anchor"
         android:layout_marginTop="10dp"
         android:textColor="#36B9F4"
-        app:layout_constraintStart_toEndOf="@id/link_to_register"
-        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        app:layout_constraintStart_toEndOf="@id/link_to_login"
+        app:layout_constraintTop_toBottomOf="@+id/button_register"
         />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
