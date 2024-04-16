@@ -44,6 +44,7 @@ class TaskDetailsActivity: AppCompatActivity() {
 
         val saveTaskButton = findViewById<Button>(R.id.update_task_button)
         val deleteTaskButton = findViewById<TextView>(R.id.delete_task_button)
+        val errorMessageText = findViewById<TextView>(R.id.create_task_error_message)
 
         saveTaskButton.setOnClickListener(){
             val taskService = RetrofitClient.taskService
@@ -57,6 +58,18 @@ class TaskDetailsActivity: AppCompatActivity() {
                 title = title,
                 description = description
             )
+
+            errorMessageText.text = ""
+
+            if(title.isEmpty()){
+                errorMessageText.text = getString(R.string.title_required)
+                return@setOnClickListener
+            }
+            if(description.isEmpty()){
+                errorMessageText.text = getString(R.string.description_required)
+                return@setOnClickListener
+            }
+
             CoroutineScope(Dispatchers.Main).launch {
                 setButtonsStatus(false)
                 try{
@@ -101,7 +114,7 @@ class TaskDetailsActivity: AppCompatActivity() {
                     }
 
                 }catch(e: Exception){
-
+                    errorMessageText.text = getString(R.string.system_error)
                 }finally {
                     setButtonsStatus(true)
                 }

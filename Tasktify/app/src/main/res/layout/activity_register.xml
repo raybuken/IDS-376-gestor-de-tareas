@@ -21,6 +21,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/register_error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/red_danger"
+        app:layout_constraintTop_toBottomOf="@id/register_title"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/register_fullname_field"
@@ -35,7 +43,7 @@
         android:textColor="@color/secondary"
         android:textColorHint="@color/secondary"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/register_title"
+        app:layout_constraintTop_toBottomOf="@+id/register_error_message"
         tools:layout_editor_absoluteX="16dp" />
 
 

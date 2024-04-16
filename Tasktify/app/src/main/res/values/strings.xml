@@ -28,4 +28,11 @@
     <string name="link_login_anchor">Sign In</string>
     <string name="link_register_anchor">Sign up!</string>
     <string name="link_register">Need an account?</string>
+    <string name="tasktify_splash_screen">Tasktify Splash Screen</string>
+    <string name="email_required">Email field required</string>
+    <string name="password_required">Password field is required</string>
+    <string name="email_password_mismatch_error">Email or password is not correct</string>
+    <string name="fullname_required">Fullname field is required</string>
+    <string name="title_required">Title field is required</string>
+    <string name="description_required">Description field is required</string>
 </resources>

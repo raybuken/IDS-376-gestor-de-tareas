@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tasktify.model.Task
@@ -22,10 +23,22 @@ class CreateTaskActivity: AppCompatActivity() {
         val context = this
 
         val saveTaskButton = findViewById<Button>(R.id.save_task_button)
+        val errorMessageText = findViewById<TextView>(R.id.create_task_error_message)
 
         saveTaskButton.setOnClickListener(){
             val title = findViewById<EditText>(R.id.edit_text_title).text.toString()
             val description = findViewById<EditText>(R.id.edit_text_description).text.toString()
+
+            errorMessageText.text = ""
+
+            if(title.isEmpty()){
+                errorMessageText.text = getString(R.string.title_required)
+                return@setOnClickListener
+            }
+            if(description.isEmpty()){
+                errorMessageText.text = getString(R.string.description_required)
+                return@setOnClickListener
+            }
 
             val taskService = RetrofitClient.taskService
             val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
@@ -54,12 +67,10 @@ class CreateTaskActivity: AppCompatActivity() {
                         startActivity(Intent(context, MainActivity::class.java))
 
                         finish()
-                    }else{
-
                     }
 
                 }catch(e: Exception){
-                    val a = e;
+                    errorMessageText.text = getString(R.string.system_error)
                 }
                 finally {
                     saveTaskButton.isEnabled = true
