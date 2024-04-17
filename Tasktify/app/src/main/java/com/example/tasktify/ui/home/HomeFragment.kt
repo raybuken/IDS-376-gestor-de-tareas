@@ -39,9 +39,11 @@ class HomeFragment : Fragment() {
             "MyPrefs", Context.MODE_PRIVATE
         )
 
+        val emptyTaskText = view.findViewById<TextView>(R.id.task_list_empty)
+
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.taskList.observe(viewLifecycleOwner) { taskList ->
-            if(taskList != null){
+            if(!taskList.isNullOrEmpty()){
                 val taskListData = taskList.map { taskItem ->
                     Task(
                         title = taskItem.title,
@@ -53,6 +55,10 @@ class HomeFragment : Fragment() {
                 }
                 val taskListView = view.findViewById<ListView>(R.id.task_list_view)
                 taskListView.adapter = TaskListAdapter(requireContext(), taskListData)
+
+                emptyTaskText.text = ""
+            }else{
+                emptyTaskText.text = getString(R.string.empty_task_message)
             }
         }
 

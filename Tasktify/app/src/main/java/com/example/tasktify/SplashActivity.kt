@@ -56,7 +56,4 @@ class SplashActivity: AppCompatActivity() {
         return sharedPreferences.getBoolean("isLoggedIn", false)
     }
 
-    companion object {
-        private const val SPLASH_DURATION = 2000L
-    }
 }

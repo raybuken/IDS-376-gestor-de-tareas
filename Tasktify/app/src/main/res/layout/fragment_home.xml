@@ -37,5 +37,14 @@
         android:divider="@drawable/task_list_divider"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <TextView
+        android:id="@+id/task_list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profile_hello_text"
+        app:flow_horizontalAlign="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:flow_verticalAlign="center"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

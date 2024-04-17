@@ -35,4 +35,7 @@
     <string name="fullname_required">Fullname field is required</string>
     <string name="title_required">Title field is required</string>
     <string name="description_required">Description field is required</string>
+    <string name="empty_task_message">No task available to show</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
 </resources>
