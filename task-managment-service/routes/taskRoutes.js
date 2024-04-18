@@ -3,6 +3,7 @@ const router = express.Router();
 const {Task} = require('../models');
 const authenticateUser = require('../middlewares/authMiddleware');
 const jwt = require('jsonwebtoken');
+const dateHelpers = require('../helpers/dateHelpers')
 
 router.use(authenticateUser)
 
@@ -41,10 +42,11 @@ router.post('/', async(req, res) => {
     const token = req.header('authorization').replace("Bearer ", "");
     const decoded = jwt.decode(token, "secretkey")
     const userId = decoded.id
-    const {title, description} = req.body
+    const {title, description, date} = req.body
 
     try{
-        const task = await Task.create({title, description, userId})
+        const utcDate = dateHelpers.parseStringToDate(date)
+        const task = await Task.create({title, description, date: utcDate, userId})
         res.status(201).json({success: true, task})
     }catch(err){
         res.status(500).json({
@@ -57,23 +59,26 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
     const { id } = req.params
-    const {title, description} = req.body
+    const {title, description, date} = req.body
 
     try{
         const task = await Task.findOne({where: {id}})
+        const stringDate = dateHelpers.parseDateToString(date)
 
         if(!task){
             return res.status(404).json({success: false, message: 'Task not found' });
         }
 
-        task.title = title;
+        task.title = title
         task.description = description
+        task.date = stringDate
 
         await task.save();
 
         res.json({
             title: task.title,
-            description: task.description
+            description: task.description,
+            date: task.date
         })
     }catch(err){
         res.status(500).json({

@@ -15,7 +15,9 @@ module.exports = (sequelize) => {
     },
     statusId: {
       type: DataTypes.STRING,
-      defaultValue: "1"
+    },
+    date: {
+      type: DataTypes.DATE
     },
 
   })
