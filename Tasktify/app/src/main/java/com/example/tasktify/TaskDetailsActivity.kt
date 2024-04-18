@@ -154,7 +154,7 @@ class TaskDetailsActivity: AppCompatActivity() {
 
         taskTitle.setText(task.title)
         taskDescription.setText(task.description)
-        selectedDateTextView.setText(task.date)
+        selectedDateTextView.text = task.date
     }
 
     private fun setButtonsStatus(enabled: Boolean){
