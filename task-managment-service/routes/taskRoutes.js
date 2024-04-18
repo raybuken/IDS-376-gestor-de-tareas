@@ -63,7 +63,7 @@ router.put('/:id', async(req, res) => {
 
     try{
         const task = await Task.findOne({where: {id}})
-        const stringDate = dateHelpers.parseDateToString(date)
+        const stringDate = dateHelpers.parseStringToDate(date)
 
         if(!task){
             return res.status(404).json({success: false, message: 'Task not found' });

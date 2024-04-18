@@ -38,4 +38,5 @@
     <string name="empty_task_message">No task available to show</string>
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
+    <string name="date_field_required">Date field required</string>
 </resources>

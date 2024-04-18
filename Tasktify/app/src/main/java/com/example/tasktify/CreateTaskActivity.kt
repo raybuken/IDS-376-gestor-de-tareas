@@ -10,12 +10,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tasktify.model.Task
 import com.example.tasktify.network.RetrofitClient
+import com.example.tasktify.ui.utils.DatePickerFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class CreateTaskActivity: AppCompatActivity() {
+    private lateinit var selectedDateTextView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_task)
@@ -24,10 +29,12 @@ class CreateTaskActivity: AppCompatActivity() {
 
         val saveTaskButton = findViewById<Button>(R.id.save_task_button)
         val errorMessageText = findViewById<TextView>(R.id.create_task_error_message)
+        selectedDateTextView = findViewById(R.id.edit_text_date)
 
         saveTaskButton.setOnClickListener(){
             val title = findViewById<EditText>(R.id.edit_text_title).text.toString()
             val description = findViewById<EditText>(R.id.edit_text_description).text.toString()
+            val date = selectedDateTextView.text.toString()
 
             errorMessageText.text = ""
 
@@ -37,6 +44,10 @@ class CreateTaskActivity: AppCompatActivity() {
             }
             if(description.isEmpty()){
                 errorMessageText.text = getString(R.string.description_required)
+                return@setOnClickListener
+            }
+            if(date.isEmpty()){
+                errorMessageText.text = getString(R.string.date_field_required)
                 return@setOnClickListener
             }
 
@@ -49,6 +60,7 @@ class CreateTaskActivity: AppCompatActivity() {
                     val task = Task(
                         title = title,
                         description = description,
+                        date = date,
                         id = "",
                         status = "",
                         statusId = "",
@@ -78,5 +90,17 @@ class CreateTaskActivity: AppCompatActivity() {
 
             }
         }
+
+        selectedDateTextView.setOnClickListener(){
+            val calendarDialogFragment = DatePickerFragment()
+            calendarDialogFragment.setOnDateSelectedListener { date ->
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val selectedDateStr = dateFormat.format(date)
+                selectedDateTextView.text = selectedDateStr
+            }
+            calendarDialogFragment.show(supportFragmentManager, "CalendarDialogFragment")
+        }
+
+
     }
 }

@@ -52,24 +52,28 @@ class TasktifyInstrumentedTest {
         val task1 = Task(
             id = "1",
             title = "Task 1",
+            date = "02/10/2024",
             description = "Lorem ipsum dolor"
         )
 
         val task2 = Task(
             id = "2",
             title = "Task 2",
+            date = "06/10/2024",
             description = "Lorem ipsum dolor"
         )
 
         val task3 = Task(
             id = "3",
             title = "Task 3",
+            date = "02/01/2024",
             description = "Lorem ipsum dolor"
         )
 
         val task4 = Task(
             id = "4",
             title = "Task 4",
+            date = "02/05/2024",
             description = "Lorem ipsum dolor"
         )
 

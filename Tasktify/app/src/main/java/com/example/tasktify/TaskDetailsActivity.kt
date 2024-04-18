@@ -15,13 +15,17 @@ import com.example.tasktify.model.Task
 import com.example.tasktify.network.RetrofitClient
 import com.example.tasktify.network.RetrofitClient.taskService
 import com.example.tasktify.ui.taskDetails.TaskDetailsViewModel
+import com.example.tasktify.ui.utils.DatePickerFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class TaskDetailsActivity: AppCompatActivity() {
+    private lateinit var selectedDateTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,8 @@ class TaskDetailsActivity: AppCompatActivity() {
         val saveTaskButton = findViewById<Button>(R.id.update_task_button)
         val deleteTaskButton = findViewById<TextView>(R.id.delete_task_button)
         val errorMessageText = findViewById<TextView>(R.id.create_task_error_message)
+        selectedDateTextView = findViewById(R.id.edit_text_date)
+
 
         saveTaskButton.setOnClickListener(){
             val taskService = RetrofitClient.taskService
@@ -53,9 +59,12 @@ class TaskDetailsActivity: AppCompatActivity() {
             val token = sharedPreferences?.getString("token", "")
             val title = taskTitle.text.toString()
             val description = taskDescription.text.toString()
+            val date = selectedDateTextView.text.toString()
+
             val task = Task(
                 id = id,
                 title = title,
+                date = date,
                 description = description
             )
 
@@ -65,8 +74,14 @@ class TaskDetailsActivity: AppCompatActivity() {
                 errorMessageText.text = getString(R.string.title_required)
                 return@setOnClickListener
             }
+
             if(description.isEmpty()){
                 errorMessageText.text = getString(R.string.description_required)
+                return@setOnClickListener
+            }
+
+            if(date.isEmpty()){
+                errorMessageText.text = getString(R.string.date_field_required)
                 return@setOnClickListener
             }
 
@@ -120,13 +135,26 @@ class TaskDetailsActivity: AppCompatActivity() {
                 }
             }
         }
+
+        selectedDateTextView.setOnClickListener(){
+            val calendarDialogFragment = DatePickerFragment()
+            calendarDialogFragment.setOnDateSelectedListener { date ->
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val selectedDateStr = dateFormat.format(date)
+                selectedDateTextView.text = selectedDateStr
+            }
+            calendarDialogFragment.show(supportFragmentManager, "CalendarDialogFragment")
+        }
+
     }
     private fun updateFields(task: Task){
         val taskTitle = findViewById<EditText>(R.id.edit_text_title)
         val taskDescription = findViewById<EditText>(R.id.edit_text_description)
 
+
         taskTitle.setText(task.title)
         taskDescription.setText(task.description)
+        selectedDateTextView.setText(task.date)
     }
 
     private fun setButtonsStatus(enabled: Boolean){
