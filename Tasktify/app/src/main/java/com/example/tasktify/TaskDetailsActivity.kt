@@ -151,10 +151,9 @@ class TaskDetailsActivity: AppCompatActivity() {
         val taskTitle = findViewById<EditText>(R.id.edit_text_title)
         val taskDescription = findViewById<EditText>(R.id.edit_text_description)
 
-
         taskTitle.setText(task.title)
         taskDescription.setText(task.description)
-        selectedDateTextView.text = task.date
+        selectedDateTextView.text = task.getFormattedDate()
     }
 
     private fun setButtonsStatus(enabled: Boolean){

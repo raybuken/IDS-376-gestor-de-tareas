@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:textColor="@color/secondary_light_green"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/input_date"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/edittext_rounded_border"

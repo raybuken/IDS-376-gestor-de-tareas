@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
                         description = taskItem.description,
                         status = taskItem.status,
                         id = taskItem.id,
-                        date = taskItem.date,
+                        date = taskItem.getFormattedDate(),
                         statusId = taskItem.statusId
                     )
                 }

@@ -1,6 +1,9 @@
 package com.example.tasktify.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
 import java.util.Calendar
 import java.util.Locale
 
@@ -11,27 +14,23 @@ data class Task (
     val date: String? = "",
     var status: String? = "",
     var statusId: String? = ""
+
 ){
     fun getFormattedDate(): String{
-        if(date == null){
-            return ""
-        }
-        val parts = date.split('T')
-        val datePart = parts[0].split('-')
-        val year = datePart[0].toInt()
-        val month = datePart[1].toInt() - 1
-        val day = datePart[2].toInt()
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX", Locale.getDefault())
+        val date = sdf.parse(date)
 
-        val timePart = parts[1].removeSuffix("Z").split(':')
-        val hours = timePart[0].toInt()
-        val minutes = timePart[1].toInt()
-        val seconds = timePart[2].toInt()
+        val calendar = Calendar.getInstance()
+        calendar.time = date
 
-        val calendar = Calendar.getInstance().apply {
-            set(year, month, day, hours, minutes, seconds)
-        }
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val month = calendar.get(Calendar.MONTH) + 1
+        val year = calendar.get(Calendar.YEAR)
 
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-        return dateFormat.format(calendar.time)
+        val formattedDate = "${day.toString().padStart(2, '0')}/" +
+                "${month.toString().padStart(2, '0')}/$year"
+
+
+        return formattedDate
     }
 }
