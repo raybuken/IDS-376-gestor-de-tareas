@@ -12,15 +12,7 @@ router.get('/', async (req, res) => {
     const decoded = jwt.decode(token, "secretkey")
     const {id} = decoded
     try {
-      let tasks = await Task.findAll({ where: { userId: id } });
-      tasks = tasks.map(task => {
-
-        return {
-            ...task,
-            date: dateHelpers.parseDateToString(task.date)
-        }
-      })
-
+      const tasks = await Task.findAll({ where: { userId: id } });
       res.json({success: true, items: tasks});
     } catch (error) {
       console.error(error);
@@ -38,7 +30,7 @@ router.get('/:id', async(req, res) => {
             return res.status(404).json({ message: 'Task not found' });
         }
 
-        res.json({...task, date: dateHelpers.parseDateToString(task.date)})
+        res.json(task)
     }catch(err){
         res.status(500).json({
             message: "Interval server error"
@@ -86,7 +78,7 @@ router.put('/:id', async(req, res) => {
         res.json({
             title: task.title,
             description: task.description,
-            date: dateHelpers.parseStringToDate(task.date)
+            date: task.date
         })
     }catch(err){
         res.status(500).json({
