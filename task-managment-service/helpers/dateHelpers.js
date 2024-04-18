@@ -7,16 +7,26 @@ function parseStringToDate(string) {
     return date;
 }
 
-function parseDateToString(date) {
-    const day = date.getUTCDate();
-    const month = date.getUTCMonth() + 1; 
-    const year = date.getUTCFullYear();
+function parseDateToString(dateString) {
+    var parts = dateString.split(' ');
 
-    const formattedDay = (day < 10 ? '0' : '') + day;
-    const formattedMonth = (month < 10 ? '0' : '') + month;
+    var dateParts = parts[0].split('-');
+    var year = parseInt(dateParts[0]);
+    var month = parseInt(dateParts[1]) - 1;
+    var day = parseInt(dateParts[2]);
 
-    const dateString = `${formattedDay}/${formattedMonth}/${year}`;
-    return dateString;
+    var timeParts = parts[1] ? parts[1].split(':') : [0, 0, 0];
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+    var seconds = parseInt(timeParts[2]);
+
+    var date = new Date(year, month, day, hours, minutes, seconds);
+
+    var formattedDay = date.getDate().toString().padStart(2, '0');
+    var formattedMonth = (date.getMonth() + 1).toString().padStart(2, '0');
+    var formattedYear = date.getFullYear();
+
+    return formattedDay + '/' + formattedMonth + '/' + formattedYear;
 }
 
 module.exports = {
