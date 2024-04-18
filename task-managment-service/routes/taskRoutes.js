@@ -12,7 +12,15 @@ router.get('/', async (req, res) => {
     const decoded = jwt.decode(token, "secretkey")
     const {id} = decoded
     try {
-      const tasks = await Task.findAll({ where: { userId: id } });
+      let tasks = await Task.findAll({ where: { userId: id } });
+      tasks = tasks.map(task => {
+
+        return {
+            ...task,
+            date: dateHelpers.parseDateToString(task.date)
+        }
+      })
+
       res.json({success: true, items: tasks});
     } catch (error) {
       console.error(error);
@@ -78,7 +86,7 @@ router.put('/:id', async(req, res) => {
         res.json({
             title: task.title,
             description: task.description,
-            date: task.date
+            date: dateHelpers.parseStringToDate(task.date)
         })
     }catch(err){
         res.status(500).json({
